@@ -1,0 +1,22 @@
+version: "3"
+services:
+  php:
+    container_name: "teste_login_php"
+    image: php:8.1.16-apache
+    volumes:
+      - ./site:/var/www/html/
+    ports:
+      - 8082:80
+  db:
+    image: mariadb:10.5
+    container_name: "teste_login_mariadb"
+    restart: always
+    environment:
+      - MARIADB_USER=root
+      - MARIADB_ROOT_PASSWORD=123  
+  adminer:
+    image: adminer:4.8.1
+    container_name: "teste_login_adminer"
+    restart: always
+    ports:
+      - 81:8080
